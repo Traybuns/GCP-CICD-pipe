@@ -16,6 +16,7 @@ showMessage();
 console.log (message);
 
 //CALLBACK FUNCTIONS
+//any function that takes another function as a parameter and invokes or executes that is a call back function
 function ask(question, yes, no) {
     if (confirm(question)) yes()
         else no();
