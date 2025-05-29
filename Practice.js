@@ -82,14 +82,95 @@ function doSomething(){
 }
 
 doSomething();
+ 
+var x = 10;
+const y =20;
+let z = 30;
 
+function doSomething(){
+    console.log(x,y,z)
+}
+doSomething()
+//closed functions
+function outer(x){
+    function inner(y){
+        return x+y;
+    }
+    return inner; 
+}
 
+//callback functions
+//passing functions as a parameter to other functions
+function party(bar){
+    if(itsNight){
+        bar();
+    }
+    if(partyHasStarted){
+        bar();
 
+    }
+}
 
+//heirachial functions: it takes one or more functions as argument, it may return a function
+function gateCapture(camera){
+    camera();
+}
+gateCapture (function(){
+    console.log('Canon')
+})
 
+function returnFn(){
+    return function(){
+        console.log('returning');
+    }
+}
+const fn = returnFn();
+fn()
 
+// pure functions: produces the same output for te same input
+function sayGreeting(name){
+    return `hello ${name}`;
+}
 
+sayGreeting('Bun');
+let greeting = "Hello";
+function sayGreeting(name){
+    return `${greeting} ${name}`;
+}
+sayGreeting ('Bun')
+greeting = 'Hello beautiful';
+sayGreeting('Bun')
 
+//recursion a function that ecalls and calls itself
+function foo(){
 
+}
+function foo(){
+    console.log('foo');
+    foo();
+}
+foo();
 
+const foo = function buz(){
+    buz();
+}
 
+function recurse() {
+    if(base_consition) {
+        //do something
+        return;
+    }
+    recurse();
+}
+
+//2
+function fetchWater(count){
+    if(count===0) {
+        console.log('No more water left');
+        return;
+    }
+    console.log('Fetching water...');
+    fetchWater(count -1);
+}
+
+fetchWater(5);
