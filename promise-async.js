@@ -139,6 +139,38 @@ getDadJokes();
 
 
 
+//abstract into functions.....maybe from a form
+const getDataFromForm = () = {
+    const requestObj = {
+        firstname: "Bruce",
+        lastname: "Lee",
+        category: ["nerdy"]
+    };
+    return requestObj;
+}
+const buildRequestUrl = (requestData) => {
+    return `http://api.icndb.com/jokes/random?firstname=${requestData.firstName}&lastname=${requestData.lastname}&limitTo${requestData.categories}`;
+}
+
+const requestJoke = async (url) => {
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+    const joke = jsonResponse.value.joke;
+    postJokeToPage(joke);
+}
+const postJokeToPage = (joke) => {
+    console.log(joke);
+}
+//procedural "workflow" function
+const processJokeRequest = async (url) => {
+    const requestData = getDataFromForm();
+    const requestUrl = buildrequestUrl (requestData);
+    await requestJoke(requestUrl);
+    console.log("finished");
+}
+
+
+
 
 
 
